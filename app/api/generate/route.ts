@@ -42,7 +42,7 @@ const POST = async (req: NextRequest) => {
         { role: "system", content: prompt },
         { role: "user", content: data.text },
       ],
-      model: "gpt-4o-mini",
+      model: "gpt-5.1-mini",
       response_format: { type: "json_object" },
       temperature: 0.5,
     });
