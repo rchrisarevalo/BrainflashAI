@@ -14,6 +14,21 @@ import { useRouter, useSearchParams } from "next/navigation";
 import ReactCardFlip from "react-card-flip";
 import ReactGA from "react-ga4";
 
+import { Raleway, Poppins } from "next/font/google";
+
+const raleway = Raleway({
+  subsets: ["latin"],
+  variable: "--font-raleway",
+  display: "swap"
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"], // Poppins requires explicit weights — it has no variable-weight axis in next/font like some others do
+  variable: "--font-poppins",
+  display: "swap",
+});
+
 const Flashcards = () => {
   const { user } = useUser();
   const [flashcards, setFlashcards] = useState<Flashcard[]>([]);
@@ -183,8 +198,7 @@ const Flashcards = () => {
         className="p-10 flex flex-col gap-16 w-full bg-gradient-to-t from-[#1476bc] to-[#9fbedb] rounded-lg shadow-lg max-w-3xl mx-auto"
       >
         <label
-          className="text-4xl text-center font-semibold text-white"
-          style={{ fontFamily: "'Raleway', sans-serif" }}
+          className={`text-4xl text-center font-semibold text-white ${raleway.className}`}
         >
           Enter Your Notes
         </label>
@@ -199,8 +213,7 @@ const Flashcards = () => {
         ></textarea>
         <button
           type="submit"
-          className="p-5 bg-[#1476bc] text-white rounded-lg shadow-lg font-extrabold text-xl transition-colors hover:bg-[#0a3f5d]"
-          style={{ fontFamily: "'Raleway', 'sans-serif" }}
+          className={`p-5 bg-[#1476bc] text-white rounded-lg shadow-lg font-extrabold text-xl transition-colors hover:bg-[#0a3f5d] ${raleway.className}`}
         >
           Generate Flashcards
         </button>
@@ -243,10 +256,10 @@ const Flashcards = () => {
                   flipDirection="horizontal"
                   containerStyle={{ width: "100%", height: "100%", }}
                 >
-                  <div className="overflow-y-auto overflow-x-hidden flex items-center justify-center w-full h-full bg-white p-5 rounded-lg shadow-lg font-raleway">
+                  <div className="overflow-y-auto overflow-x-hidden flex items-center justify-center w-full h-full bg-white p-5 rounded-lg shadow-lg">
                     <h5 className="text-xl">{card.front}</h5>
                   </div>
-                  <div className="overflow-y-auto overflow-x-hidden items-center flex justify-center w-full h-full bg-white p-5 rounded-lg shadow-lg font-raleway">
+                  <div className="overflow-y-auto overflow-x-hidden items-center flex justify-center w-full h-full bg-white p-5 rounded-lg shadow-lg">
                     {card.back}
                   </div>
                 </ReactCardFlip>
