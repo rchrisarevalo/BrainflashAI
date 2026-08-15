@@ -42,7 +42,7 @@ const POST = async (req: NextRequest) => {
         { role: "system", content: prompt },
         { role: "user", content: data.text },
       ],
-      model: "gpt-5.1-mini",
+      model: "gpt-5.4-mini",
       response_format: { type: "json_object" },
       temperature: 0.5,
     });
@@ -51,11 +51,14 @@ const POST = async (req: NextRequest) => {
       chat_completion.choices[0].message.content as string
     );
 
+    console.log("Flashcards: ", flashcards);
+
     return NextResponse.json({
       status: 200,
       message: flashcards,
     });
   } catch (error) {
+    console.log(error);
     return NextResponse.json({
       status: 500,
       message: error,
