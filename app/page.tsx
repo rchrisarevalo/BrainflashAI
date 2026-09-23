@@ -8,6 +8,7 @@ import Link from "next/link";
 import ReactGA from "react-ga4";
 import { useEffect } from "react";
 import roundLogo from "./images/roundLogo.png";
+import Footer from "./components/Footer";
 
 export default function Home() {
   const router = useRouter();
@@ -103,6 +104,7 @@ export default function Home() {
           </section>
         )}
       </div>
+      <Footer />
     </main>
   );
 }
